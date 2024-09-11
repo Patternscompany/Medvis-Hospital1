@@ -194,12 +194,21 @@
     console.log("show");
   });
 
-  const item=document.querySelector(".nav-item.drop-down .drop-items");
-  const itemBtn=document.querySelector(".nav-item.drop-down");
+  const itemBtn = document.querySelectorAll(".nav-item.drop-down");
 
-itemBtn.addEventListener("click",()=>{
-  itemBtn.classList.toggle("active");
-})
+  itemBtn.forEach((item) => {
+    // item.classList.remove("active");
+    item.addEventListener("click", () => {
+      // First, remove the 'active' class from all items
+      itemBtn.forEach((btn) => btn.classList.remove("active"));
+      
+      // Then, add the 'active' class to the clicked item
+      item.classList.add("active");
+    });
+  });
+  
+
+
 
   // scroll
   var scrollWindow = function () {

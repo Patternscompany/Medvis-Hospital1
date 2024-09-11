@@ -4615,10 +4615,13 @@ border: 0;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  padding-left: 0;
+  /* padding-left: 0; */
   margin-bottom: 0;
   list-style: none;
-  margin: auto;
+
+  padding: 0;
+  margin-right: 0;
+  margin-left: auto;
 }
 .navbar-nav .nav-link {
   padding-right: 0;
@@ -10783,13 +10786,14 @@ h5,
   font-size: 15px;
   /* padding-top: 2rem;
   padding-bottom: 2rem; */
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
   font-weight: 800;
   color: #000000;
   letter-spacing: 1px;
   text-transform: uppercase;
   opacity: 1 !important;
+
 }
 .ftco-navbar-light .navbar-nav > .nav-item > .nav-link:hover {
   color: var(--primary);
@@ -10809,6 +10813,7 @@ h5,
 
 .nav-item.drop-down {
   position: relative;
+
 }
 
 .nav-item.drop-down .drop-items {
@@ -10820,6 +10825,7 @@ h5,
   display: none;
   margin-left: 2rem;
   box-shadow: 2px 2px 3px;
+left: 0;
 }
 
 .navbar.fixed {
