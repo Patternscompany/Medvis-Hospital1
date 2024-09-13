@@ -122,32 +122,32 @@
     <div class="container">
       <div class="row d-flex align-items-stretch no-gutters">
         <div class="col-md-12 p-4 p-md-5 bg-light">
-          <form action="#">
+          <form id="contactForm" action="#">
             <div class="form-group">
-              <input type="text" class="form-control" required placeholder="Enter Your Name">
+              <input id="name" type="text" class="form-control" required placeholder="Enter Your Name">
             </div>
             <div class="form-group">
-              <input type="number" class="form-control" required placeholder="Enter Your Age">
+              <input id="age" type="number" class="form-control" required placeholder="Enter Your Age">
             </div>
 
             <div class="form-group">
-              <input type="number" class="form-control" required placeholder="Enter Your Number">
+              <input id="mobileNumber" type="number" class="form-control" required placeholder="Enter Your Number">
             </div>
             <div class="w-100">
-                <input type="time" class="form-control input-form" required min="09:00" max="21:00">
+              <input id="time" type="time" class="form-control input-form" required min="09:00" max="21:00">
 
-                <select class="form-control input-form">
-                  <option disabled>-- Select a service --</option>
-                  <option>General Medicine</option>
-                  <option>Dental Care</option>
-                  <option>Hair Transplantation</option>
-                </select>
+              <select id="service" class="form-control input-form">
+                <option value="General Medicine">General Medicine</option>
+                <option value="Dental Care">Dental Care</option>
+                <option value="Hair Transplantation">Hair Transplantation</option>
+              </select>
             </div>
             <!-- <div class="form-group">
               <input type="text" class="form-control" required placeholder="Your Email">
             </div> -->
             <div class="form-group">
-              <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+              <textarea name="" id="complaint" cols="30" rows="7" class="form-control"
+                placeholder="Complaint"></textarea>
             </div>
             <div class="form-group">
               <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
@@ -175,11 +175,6 @@
     input[type="number"]:hover::-webkit-inner-spin-button,
     input[type="number"]:hover::-webkit-outer-spin-button {
       display: none;
-    }
-    .input-form{
-      display: inline-block;
-      width:48% !important;
-      margin-bottom: 10px;
     }
   </style>
 
@@ -391,26 +386,20 @@
         <div class="col-md ftco-footer-widget  mb-5 ml-md-4">
           <h2 class="ftco-heading-2">Services</h2>
           <ul class="list-unstyled">
-            <li><a href="./services/orthopedic.html"><span
-                  class="ion-ios-arrow-round-forward mr-2"></span>Orthopedic</a>
-            </li>
-            <li><a href="./services/gynecology.html"><span
-                  class="ion-ios-arrow-round-forward mr-2"></span>Gynecology</a>
-            </li>
-            <li><a href="./services/hair-transplantation.html"><span
-                  class="ion-ios-arrow-round-forward mr-2"></span>Hair
-                Transplantation</a>
-            </li>
             <li><a href="./services/dental-services.html"><span class="ion-ios-arrow-round-forward mr-2"></span>Dental
                 Care</a></li>
             <li><a href="./services/general-medicine.html"><span class="ion-ios-arrow-round-forward mr-2"></span>General
                 Medicine</a></li>
+            <li><a href="./services/hair-transplantation.html"><span
+                  class="ion-ios-arrow-round-forward mr-2"></span>Hair
+                Transplantation</a>
+            </li>
           </ul>
         </div>
         <div class="col-md">
           <div class="ftco-footer-widget mb-5">
             <h2 class="ftco-heading-2">Opening Hours</h2>
-            <h3 class="open-hours pl-4"><span class="ion-ios-time mr-3"></span>We are open 24/7</h3>
+            <h3 class="open-hours pl-4"><span class="ion-ios-time mr-3"></span>Mon to Sun - 09 AM to 09 PM</h3>
           </div>
           <div class="ftco-footer-widget mb-5">
             <h2 class="ftco-heading-2">Subscribe Us!</h2>
@@ -459,6 +448,33 @@
           fixedImage.style.display = "none";
         }
       });
+
+      // Select the form
+      const contactForm = document.getElementById('contactForm');
+
+      // Add event listener for form submission
+      contactForm.addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Get form data
+        const name = document.getElementById("name").value;
+        const age = document.getElementById("age").value;
+        const mobileNumber = document.getElementById("mobileNumber").value;
+        const time = document.getElementById("time").value;
+        const service = document.getElementById("service").value;
+        const complaint = document.getElementById("complaint").value;
+
+        // Format message
+        const message = `Hello, I would like to make an inquiry:\n Name: ${name}\n Age: ${age}\n Mobile Number: ${mobileNumber}\n Preferred Time: ${time}\n Service: ${service}\n Complaint: ${complaint}`;
+
+        // WhatsApp URL (replace with your WhatsApp number)
+        const whatsappUrl = `https://wa.me/+918886669087?text=${encodeURIComponent(message)}`;
+
+        // Open WhatsApp with pre-filled message
+        window.open(whatsappUrl, '_blank');
+      });
+
+
     });
   </script>
   <script src="js/jquery.min.js"></script>
