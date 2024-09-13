@@ -13070,3 +13070,14 @@ body > footer > div > div:nth-child(2) {
 }
 
 
+.input-form {
+  display: inline-block;
+  width: 48% !important;
+  margin-bottom: 10px;
+}
+
+@media (max-width:992px) {
+  .input-form {
+    width: 100% !important;
+  }
+}
