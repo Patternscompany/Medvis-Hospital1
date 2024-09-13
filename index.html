@@ -92,17 +92,17 @@
                 </a>
               </li>
               <li><a href="/services/Chronic-Disease-Management.html">Chronic Disease Management
-              </a></li>
+                </a></li>
               <li><a href="services/Acute-Care.html">Acute Care
-              </a></li>
+                </a></li>
               <li><a href="/services/Diagnostic-Services.html">Diagnostic Services
-              </a></li>
+                </a></li>
               <li><a href="services/Personalizedm-Treatment-Plans.html"> Personalizedm Treatment Plans
-              </a></li>
+                </a></li>
               <!-- <li><a href="./services/medifacials.html">Medifacials</a></li> -->
               <!-- <li><a href="./services/tan-removal.html">Tan Removal</a></li> -->
-             
-            
+
+
             </ul>
           </li>
           <li class="nav-item drop-down">
@@ -682,31 +682,32 @@
             promise, ensuring their well-being and satisfaction.</p>
         </div>
         <div class="col-md-6">
-          <form action="#">
+          <form id="contactForm" action="#">
             <div class="form-group">
-              <input type="text" class="form-control" required placeholder="Enter Your Name">
+              <input id="name" type="text" class="form-control" required placeholder="Enter Your Name">
             </div>
             <div class="form-group">
-              <input type="number" class="form-control" required placeholder="Enter Your Age">
+              <input id="age" type="number" class="form-control" required placeholder="Enter Your Age">
             </div>
 
             <div class="form-group">
-              <input type="number" class="form-control" required placeholder="Enter Your Number">
+              <input id="mobileNumber" type="number" class="form-control" required placeholder="Enter Your Number">
             </div>
             <div class="w-100">
-              <input type="time" class="form-control input-form" required min="09:00" max="21:00">
+              <input id="time" type="time" class="form-control input-form" required min="09:00" max="21:00">
 
-              <select class="form-control input-form">
-                <option>General Medicine</option>
-                <option>Dental Care</option>
-                <option>Hair Transplantation</option>
+              <select id="service" class="form-control input-form">
+                <option value="General Medicine">General Medicine</option>
+                <option value="Dental Care">Dental Care</option>
+                <option value="Hair Transplantation">Hair Transplantation</option>
               </select>
             </div>
             <!-- <div class="form-group">
               <input type="text" class="form-control" required placeholder="Your Email">
             </div> -->
             <div class="form-group">
-              <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+              <textarea name="" id="complaint" cols="30" rows="7" class="form-control"
+                placeholder="Complaint"></textarea>
             </div>
             <div class="form-group">
               <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
@@ -1108,6 +1109,32 @@
 
         }
       });
+
+      // Select the form
+      const contactForm = document.getElementById('contactForm');
+
+      // Add event listener for form submission
+      contactForm.addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Get form data
+        const name = document.getElementById("name").value;
+        const age = document.getElementById("age").value;
+        const mobileNumber = document.getElementById("mobileNumber").value;
+        const time = document.getElementById("time").value;
+        const service = document.getElementById("service").value;
+        const complaint = document.getElementById("complaint").value;
+
+        // Format message
+        const message = `Hello, I would like to make an inquiry:\n Name: ${name}\n Age: ${age}\n Mobile Number: ${mobileNumber}\n Preferred Time: ${time}\n Service: ${service}\n Complaint: ${complaint}`;
+
+        // WhatsApp URL (replace with your WhatsApp number)
+        const whatsappUrl = `https://wa.me/+918886669087?text=${encodeURIComponent(message)}`;
+
+        // Open WhatsApp with pre-filled message
+        window.open(whatsappUrl, '_blank');
+      });
+
     });
   </script>
   <script src="js/jquery.min.js"></script>

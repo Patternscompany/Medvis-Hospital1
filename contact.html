@@ -122,7 +122,7 @@
     <div class="container">
       <div class="row d-flex align-items-stretch no-gutters">
         <div class="col-md-12 p-4 p-md-5 bg-light">
-          <form action="#">
+          <form id="contactForm">
             <div class="form-group">
               <input type="text" class="form-control" required placeholder="Enter Your Name">
             </div>
@@ -447,6 +447,33 @@
           fixedImage.style.display = "none";
         }
       });
+
+      // Select the form
+      const contactForm = document.getElementById('contactForm');
+
+      // Add event listener for form submission
+      contactForm.addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Get form data
+        const name = document.getElementById("name").value;
+        const age = document.getElementById("age").value;
+        const mobileNumber = document.getElementById("mobileNumber").value;
+        const time = document.getElementById("time").value;
+        const service = document.getElementById("service").value;
+        const complaint = document.getElementById("complaint").value;
+
+        // Format message
+        const message = `Hello, I would like to make an inquiry:\n Name: ${name}\n Age: ${age}\n Mobile Number: ${mobileNumber}\n Preferred Time: ${time}\n Service: ${service}\n Complaint: ${complaint}`;
+
+        // WhatsApp URL (replace with your WhatsApp number)
+        const whatsappUrl = `https://wa.me/+918886669087?text=${encodeURIComponent(message)}`;
+
+        // Open WhatsApp with pre-filled message
+        window.open(whatsappUrl, '_blank');
+      });
+
+
     });
   </script>
   <script src="js/jquery.min.js"></script>
